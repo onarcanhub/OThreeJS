@@ -1,9 +1,13 @@
-Kameralar ve Görüş Açıları
+***2. Hafta: Matematiksel Temeller ve Dönüşümler***
 
-Perspektif Kamera (PerspectiveCamera) vs. Ortografik Kamera (OrthographicCamera)
+3D Uzayda Koordinat Sistemleri (X, Y, Z)
 
-Kamera Parametreleri: FOV (Field of View), Aspect Ratio, Near/Far Düzlemleri
+Vektörler (`Vector3`) ve Matrisler
 
-Kamera Kontrolleri: OrbitControls entegrasyonu ve özelleştirilmesi
+Pozisyon (Position), Dönme (Rotation) ve Ölçekleme (Scale)
 
-Uygulama: İnteraktif ürün inceleme kamerası yapımı.
+`Group` yapısı ile nesneleri hiyerarşik bağlama
+
+Uygulama: Güneş Sistemi modeli (Güneş etrafında dönen gezegenler).
+
+![Güneş Sistemi modeli ](./images/01.png)
