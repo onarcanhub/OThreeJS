@@ -1,4 +1,15 @@
 # OThreeJS
+***1. Hafta: 3D Web'e Giriş ve Temel Kavramlar***
+
+Web’de 3D Grafik Kütükhanesi: Three.js
+
+Geliştirme Ortamının Kurulması (Node.js, Vite, VS Code)
+
+Three.js’in Temel Yapı Taşları: Sahne (Scene), Kamera (Camera), Render Alıcı (Renderer)
+
+Uygulama: İlk Three.js "Hello World" (Dönen Küp) sahnesinin oluşturulması.
+
+![Hello World" (Dönen Küp) sahnesinin oluşturulması](/images/01.png)
 
 ***2. Hafta: Matematiksel Temeller ve Dönüşümler***
 
