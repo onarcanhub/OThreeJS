@@ -10,4 +10,4 @@ Pozisyon (Position), Dönme (Rotation) ve Ölçekleme (Scale)
 
 Uygulama: Güneş Sistemi modeli (Güneş etrafında dönen gezegenler).
 
-![Güneş Sistemi modeli ](./images/02.png)
+![Güneş Sistemi modeli ](/images/02.png)
