@@ -1,128 +1,104 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-// 1. SAHNE OLUŞTURMA
+// 1. SAHNE VE ARKA PLAN
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0f172a);
+scene.background = new THREE.Color(0x2e2a7a); //0x05050d);
 
-// 2. EKRAN BOYUTLARI VE PARAMETRELER
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-  aspect: window.innerWidth / window.innerHeight
-};
-
-// 3. KAMERANIN HAZIRLANMASI
-
-// A) Perspektif Kamera (Varsayılan)
-const perspectiveCamera = new THREE.PerspectiveCamera(60, sizes.aspect, 0.1, 100);
-perspectiveCamera.position.set(4, 3, 5);
-
-// B) Ortografik Kamera
-const frustumSize = 6;
-const orthographicCamera = new THREE.OrthographicCamera(
-  (frustumSize * sizes.aspect) / -2,
-  (frustumSize * sizes.aspect) / 2,
-  frustumSize / 2,
-  frustumSize / -2,
+// 2. KAMERA
+const camera = new THREE.PerspectiveCamera(
+  60,
+  window.innerWidth / window.innerHeight,
   0.1,
-  100
+  1000
 );
-orthographicCamera.position.set(4, 3, 5);
+// Kamerayı yukarıdan ve açılı bakacak şekilde konumlandırıyoruz
+camera.position.set(0, 15, 25);
+camera.lookAt(0, 0, 0);
 
-// Aktif olarak kullanılan kamera referansı
-let activeCamera = perspectiveCamera;
-
-// 4. İŞLEYİCİ (RENDERER)
+// 3. İŞLEYİCİ (RENDERER)
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(sizes.width, sizes.height);
+renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
 
-// 5. ORBIT CONTROLS ENTEGRASYONU
-let controls = new OrbitControls(activeCamera, renderer.domElement);
-controls.enableDamping = true;      // Yumuşak kamera sönümlemesi
-controls.dampingFactor = 0.05;
-controls.maxPolarAngle = Math.PI / 2 - 0.05; // Kameranın yerin altına girmesini engeller
+// ==========================================
+// HİYERARŞİK GÜNEŞ SİSTEMİ OLUŞTURMA (GROUPS)
+// ==========================================
 
-// 6. SAHNE ELEMANLARI (Ürün Stant Modeli)
-// 6.1. Zemin / Stant
-const floorGeometry = new THREE.CylinderGeometry(3, 3, 0.2, 32);
-const floorMaterial = new THREE.MeshBasicMaterial({ color: 0x334155, wireframe: true });
-const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-floor.position.y = -0.1;
-scene.add(floor);
+// 4.1. Güneş Sistemi Grubu (Tüm sistemin ebeveyni)
+const solarSystemGroup = new THREE.Group();
+scene.add(solarSystemGroup);
 
-// 6.2. Merkezdeki Ürün Nesnesi (Soyut Şekil)
-const productGroup = new THREE.Group();
-
-const coreGeometry = new THREE.BoxGeometry(1.2, 1.2, 1.2);
-const coreMaterial = new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true });
-const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial);
-
-const ringGeometry = new THREE.TorusGeometry(1.5, 0.08, 16, 100);
-const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xf43f5e, wireframe: true });
-const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
-ringMesh.rotation.x = Math.PI / 2;
-
-productGroup.add(coreMesh);
-productGroup.add(ringMesh);
-productGroup.position.y = 1;
-scene.add(productGroup);
-
-// 7. KAMERA DEĞİŞTİRME BUTON MANTIĞI
-const btn = document.getElementById('toggle-camera-btn');
-btn.addEventListener('click', () => {
-  if (activeCamera === perspectiveCamera) {
-    // Ortografik kameraya geçiş
-    activeCamera = orthographicCamera;
-    btn.textContent = 'Perspektif Kameraya Geç';
-  } else {
-    // Perspektif kameraya geçiş
-    activeCamera = perspectiveCamera;
-    btn.textContent = 'Ortografik Kameraya Geç';
-  }
-
-  // Kontrolleri yeni aktif kameraya bağlama
-  controls.dispose(); // Eski kontrolü temizle
-  controls = new OrbitControls(activeCamera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.05;
-  controls.maxPolarAngle = Math.PI / 2 - 0.05;
+// 4.2. Güneş (Sun)
+const sunGeometry = new THREE.SphereGeometry(2, 32, 32);
+const sunMaterial = new THREE.MeshBasicMaterial({
+  color: 0xffcc00,
+  wireframe: true // Yüzey çizgilerini görebilmek için
 });
+const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
+solarSystemGroup.add(sunMesh);
 
-// 8. EKRAN BOYUTU DEĞİŞİMİ (RESPONSIVE)
-window.addEventListener('resize', () => {
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
-  sizes.aspect = sizes.width / sizes.height;
+// 4.3. Dünya Yörünge Grubu (Dünya ve Ay'ın Güneş etrafında dönmesi için)
+const earthOrbitGroup = new THREE.Group();
+solarSystemGroup.add(earthOrbitGroup);
 
-  // Perspektif kamera güncelleme
-  perspectiveCamera.aspect = sizes.aspect;
-  perspectiveCamera.updateProjectionMatrix();
-
-  // Ortografik kamera güncelleme
-  orthographicCamera.left = (frustumSize * sizes.aspect) / -2;
-  orthographicCamera.right = (frustumSize * sizes.aspect) / 2;
-  orthographicCamera.top = frustumSize / 2;
-  orthographicCamera.bottom = frustumSize / -2;
-  orthographicCamera.updateProjectionMatrix();
-
-  renderer.setSize(sizes.width, sizes.height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+// 4.4. Dünya (Earth)
+const earthGeometry = new THREE.SphereGeometry(0.8, 24, 24);
+const earthMaterial = new THREE.MeshBasicMaterial({
+  color: 0x2288ff,
+  wireframe: true
 });
+const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+// Dünyayı Güneş'ten X ekseninde 8 birim uzaklığa yerleştiriyoruz
+earthMesh.position.x = 8;
+earthOrbitGroup.add(earthMesh);
 
-// 9. ANİMASYON DÖNGÜSÜ
+// 4.5. Ay Yörünge Grubu (Ay'ın Dünya etrafında dönmesi için)
+const moonOrbitGroup = new THREE.Group();
+// Ay grubunu Dünya'nın üzerine konumlandırıyoruz (Lokal pozisyon)
+moonOrbitGroup.position.x = 8;
+earthOrbitGroup.add(moonOrbitGroup);
+
+// 4.6. Ay (Moon)
+const moonGeometry = new THREE.SphereGeometry(0.3, 16, 16);
+const moonMaterial = new THREE.MeshBasicMaterial({
+  color: 0xaaaaaa,
+  wireframe: true
+});
+const moonMesh = new THREE.Mesh(moonGeometry, moonMaterial);
+// Ay'ı Dünya merkezinden X ekseninde 2 birim uzağa yerleştiriyoruz
+moonMesh.position.x = 2;
+moonOrbitGroup.add(moonMesh);
+
+// ==========================================
+// 5. ANİMASYON DÖNGÜSÜ VE DÖNÜŞÜMLER
+// ==========================================
 function animate() {
   requestAnimationFrame(animate);
 
-  // Ürünün kendi etrafında dönmesi
-  productGroup.rotation.y += 0.008;
+  // A) Kendi ekseninde dönmeler
+  sunMesh.rotation.y += 0.005;   // Güneş'in kendi etrafında dönmesi
+  earthMesh.rotation.y += 0.02;  // Dünya'nın kendi etrafında dönmesi
 
-  // OrbitControls yumuşak hareket (damping) güncellemesi
-  controls.update();
+  // B) Yörünge dönmeleri (Grubun Y ekseninde dönmesi ile sağlanır)
+  earthOrbitGroup.rotation.y += 0.01; // Dünya'nın Güneş etrafında dönmesi
+  moonOrbitGroup.rotation.y += 0.04;  // Ay'ın Dünya etrafında dönmesi
 
-  renderer.render(scene, activeCamera);
+  // C) Sahneyi çizdir
+  renderer.render(scene, camera);
 }
 
 animate();
+
+
+
+// ==========================================
+// 6. EKRAN BOYUTU DEĞİŞİMİNE UYUM
+// ==========================================
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});
+
