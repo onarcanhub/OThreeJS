@@ -19,7 +19,9 @@ const perspectiveCamera = new THREE.PerspectiveCamera(60, sizes.aspect, 0.1, 100
 perspectiveCamera.position.set(4, 3, 5);
 
 // B) Ortografik Kamera
-const frustumSize = 6;
+const frustumSize = 6; //kameranın görüş alanının boyutunu 
+//(genişlik ve yükseklik ölçeğini) kontrol etmek için 
+//kullanılan matematiksel bir değişkendir.
 const orthographicCamera = new THREE.OrthographicCamera(
   (frustumSize * sizes.aspect) / -2,
   (frustumSize * sizes.aspect) / 2,
@@ -123,7 +125,6 @@ function animate() {
 
   // OrbitControls yumuşak hareket (damping) güncellemesi
   controls.update();
-
   renderer.render(scene, activeCamera);
 }
 
