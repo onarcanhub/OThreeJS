@@ -125,7 +125,7 @@ scene.add(plasticSphere);
 // MATERYAL 4: Ahşap / Mat Yüzey - MeshLambertMaterial
 // ------------------------------------------
 const matteMaterial = new THREE.MeshLambertMaterial({
-  color: 0xd97706,   // Ahşap/Toprak tonu
+  color: 0x855E42,   // Ahşap/Toprak tonu
   wireframe: false
 });
 const matteSphere = new THREE.Mesh(sphereGeometry, matteMaterial);
