@@ -9,7 +9,7 @@ Three.js’in Temel Yapı Taşları: Sahne (Scene), Kamera (Camera), Render Alı
 
 Uygulama: İlk Three.js "Hello World" (Dönen Küp) sahnesinin oluşturulması.
 <!-- ![Hello World" (Dönen Küp) sahnesinin oluşturulması](/images/01.png) -->
-<img src="/images/01.png" width="50%">
+<img src="/images/01.png" width="30%">
 
 
 ***2. Hafta: Matematiksel Temeller ve Dönüşümler***
