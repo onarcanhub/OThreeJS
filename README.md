@@ -66,5 +66,14 @@ Uygulama: Farklı malzeme türlerinin (Cam, Metal, Plastik, Ahşap) görsel kar�
 <!--![Farklı malzeme türlerinin (Cam, Metal, Plastik, Ahşap) görsel karşılaştırması](/images/05.png)-->
 <img src="/images/05.png" width="30%">
 
+***6. Hafta: Işıklar (Lights) ve Gölgeler (Shadows)***
+Işık Türleri: `AmbientLight`, `DirectionalLight`, `PointLight`, `SpotLight`, `HemisphereLight`
 
+Light Helpers (Işık yardımcıları) ile çalışmak
+
+Gölge Haritalama (Shadow Maps): Gölgeleri aktif etme, çözünürlük ve performans ayarları
+
+Uygulama: Sinematik bir stüdyo aydınlatması ve gölge sahnesi hazırlama
+
+<img src="/images/06.png" width="30%">
 
