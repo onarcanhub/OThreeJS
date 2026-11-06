@@ -77,3 +77,17 @@ Uygulama: Sinematik bir stüdyo aydınlatması ve gölge sahnesi hazırlama
 
 <img src="/images/06.png" width="30%">
 
+
+***7. Hafta: Kaplamalar (Textures) ve PBR Mimarisi***
+Kaplama Yükleyici (`TextureLoader`) kullanımı
+
+PBR Kaplama Haritaları: Color (Albedo), Normal, Roughness, Metalness, Ambient Occlusion (AO), Displacement Maps
+
+Texture UV haritalama, Repeating, Offset ve Center ayarları
+
+Uygulama: Gerçekçi bir taş/ahşap zemin ve küre yüzeyi kaplama.
+
+<img src="/images/07.png" width="30%">
+
+
+
