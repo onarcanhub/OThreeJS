@@ -89,9 +89,9 @@ Uygulama: Gerçekçi bir taş/ahşap zemin ve küre yüzeyi kaplama.
 
 <img src="/images/07.png" width="30%">
 
-
+| Açıklama / Metin | Görsel |
+| :--- | :---: |
 | AA | <img src="/images/ara/aa_bmw-logo.png" width="30%"> |
-
 | ABO | <img src="/images/ara/abo_saksi.png" width="30%"> |
 | AMA | <img src="/images/ara/ama_lotus.png" width="30%"> |
 | BD | <img src="/images/ara/bd_vazo.png" width="30%"> |
