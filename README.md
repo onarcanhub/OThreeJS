@@ -101,7 +101,7 @@ Uygulama: Gerçekçi bir taş/ahşap zemin ve küre yüzeyi kaplama.
 | EK | <img src="/images/ara/ek_kitap.png" width="30%"> |
 | İY | <img src="/images/ara/iy_cup.png" width="30%"> |
 | İSD | <img src="/images/ara/isd_Kamera.png" width="30%"> |
-| MÜ | <img src="/images/ara/mu_x.png" width="30%"> |
+| MÜ | <img src="/images/ara/mu_gulbuketi.png" width="30%"> |
 | MHY | <img src="/images/ara/mhy_sise.png" width="30%"> |
 | MCÖ | <img src="/images/ara/mco_KutupYildizi.png" width="30%"> |
 | SE | <img src="/images/ara/se_sehpa.png" width="30%"> |
