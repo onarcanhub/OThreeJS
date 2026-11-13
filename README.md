@@ -105,7 +105,7 @@ Uygulama: Gerçekçi bir taş/ahşap zemin ve küre yüzeyi kaplama.
 | MHY | <img src="/images/ara/mhy_sise.png" width="30%"> |
 | MCÖ | <img src="/images/ara/mco_KutupYildizi.png" width="30%"> |
 | SE | <img src="/images/ara/se_sehpa.png" width="30%"> |
-| ST | <img src="/images/ara/st_x.png" width="30%"> |
+| ST | <img src="/images/ara/st_kedi.png" width="30%"> |
 | ŞA | <img src="/images/ara/sa_ruj.png" width="30%"> |
 
 
