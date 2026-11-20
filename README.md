@@ -121,8 +121,6 @@ Uygulama: HDRI destekli, yüksek gerçekçilikte otomobil/takı sergileme sahnes
 <img src="/images/08.png" width="30%">
 
 
-
-<!-- yorumunuz
 9. Hafta: Kullanıcı Etkileşimi (Interactivity) ve Raycasting
 2D Fare Koordinatlarını 3D Uzaya Dönüştürme
 
@@ -134,7 +132,9 @@ Uygulama: Tıklamayla renk değiştiren ve hareket eden 3D butonlar/menüler.
 
 
 <img src="/images/09.png" width="30%">
--->
+
+
+<!-- yorumunuz-->
 
 
 <!-- yorumunuz -->
