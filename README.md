@@ -120,12 +120,11 @@ Uygulama: HDRI destekli, yüksek gerçekçilikte otomobil/takı sergileme sahnes
 
 <img src="/images/08.png" width="30%">
 
-rrrr
 
 ***9. Hafta: Kullanıcı Etkileşimi (Interactivity) ve Raycasting***
 2D Fare Koordinatlarını 3D Uzaya Dönüştürme
 
-`Raycaster Sınıfı`: 3D Nesnelere Tıklama, Üzerine Gelme (Hover) Tespiti
+`Raycaster` Sınıfı: 3D Nesnelere Tıklama, Üzerine Gelme (Hover) Tespiti
 
 Nesne Seçimi ve Vurgulama
 
@@ -133,4 +132,4 @@ Uygulama: Tıklamayla renk değiştiren ve hareket eden 3D butonlar/menüler.
 
 <img src="/images/09.png" width="30%">
 
-xxxx
+<!-- yorumunuz -->
